@@ -7,28 +7,26 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Laravel9 + Tailwind Css with Multi-Auth (Admin and User)
-- Admin Login
-- User Login and Register
 
-
-## How to run the code
-- git clone https://github.com/AjayYadavAi/laravel-9-multi-auth-system.git
-- cd laravel-9-multi-auth-system
-- cp .env.example `.env`
-- open .env and update DB_DATABASE (database details)
-- run : `composer install`
+## Cara Instalasi
+- git clone https://github.com/fahmiajiz17/DirektoriGB.git
+- run : `composer update`
 - run : `php artisan key:generate`
 - run : `php artisan migrate:fresh --seed`
 - run : `php artisan serve`
 
-- Best of luck 
+
+## Akses Login dengan
+- Admin Login
+- User Login and Register
 
 
 ## Credentials
 - #### Admin
-- email: admin@admin.com
-- password : password
+- username : admin
+- email: admin@gmail.com
+- password : admin123
 - #### user
+- username : user
 - email: user@user.com
-- password: password
+- password: user123
