@@ -3,8 +3,8 @@
 
 ## Cara Instalasi
 - git clone https://github.com/fahmiajiz17/DirektoriGB.git
-- buat database `dirgb`
-- import file sql 
+- buat database dengan nama `dirgb`
+- import file `dirgb.sql`
 - run : `composer update`
 - run : `php artisan key:generate`
 - run : `php artisan migrate:fresh --seed`
