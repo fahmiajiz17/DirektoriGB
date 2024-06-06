@@ -12,7 +12,15 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard_admin');
+        // Controller Total GB
+        $tgb = DB::table('guru_besar')
+            ->where('guru_besar.status_gb', 'A')
+            ->count();
+
+        return view(
+            'admin.dashboard_admin',
+            compact('tgb')
+        );
     }
 
     public function total()
@@ -23,11 +31,6 @@ class AdminController extends Controller
     public function data()
     {
         return view('admin.dashboard_admin');
-    }
-
-    public function listgb()
-    {
-        return view('admin.listGB');
     }
 
     public function KontenA()

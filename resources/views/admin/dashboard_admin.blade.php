@@ -35,11 +35,11 @@
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch">
                         <div class="icon-box">
                             <center>
-                                <div class="icon"><i class="fas fa-university" style="color: #f45b5b;"></i></div>
-                                <h4><a href="#data">Total Perguruan Tinggi</a></h4>
-                                {{-- <h3>{{ $tpt }}</h3> --}}
+                                <div class="icon"><i class="fas fa-user-tie" style="color: #f45b5b;"></i></div>
+                                <h4><a href="#data">Total Guru Besar</a></h4>
+                                <h3>{{ $tgb }}</h3>
                                 <hr>
-                                <p>Jumlah perguruan tinggi</p>
+                                <p>Jumlah Guru Besar</p>
                             </center>
                         </div>
                     </div>
@@ -47,36 +47,11 @@
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
                         <div class="icon-box">
                             <center>
-                                <div class="icon"><i class="fas fa-graduation-cap" style="color: #7cb5ec;"></i></div>
-                                <h4><a href="#data">Total Program Studi</a></h4>
+                                <div class="icon"><i class="fas fa-map-location-dot" style="color: #7cb5ec;"></i></div>
+                                <h4><a href="#data">Total Sebaran Wilayah</a></h4>
                                 {{-- <h3>{{ $tprodi }}</h3> --}}
                                 <hr>
-                                <p>Jumlah program studi</p>
-                            </center>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
-                        <div class="icon-box">
-                            <center>
-                                <div class="icon"><i class="fa-solid fa-school" style="color: #e4d354;"></i></div>
-                                <h4><a href="#data">Total Bentuk PT</a></h4>
-                                {{-- <h3>{{ $tbentukpt }}</h3> --}}
-                                <hr>
-                                <p>Jumlah bentuk perguruan tinggi</p>
-                            </center>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0">
-                        <div class="icon-box">
-                            <center>
-                                <div class="icon"><i class="fa-solid fa-map-location-dot" style="color: #90ed7d;"></i>
-                                </div>
-                                <h4><a href="#data">Total Wilayah</a></h4>
-                                {{-- <h3>{{ $twilayah }}</h3> --}}
-                                <hr>
-                                <p>Jumlah wilayah Provinsi</p>
+                                <p>Jumlah Sebaran Wilayah</p>
                             </center>
                         </div>
                     </div>

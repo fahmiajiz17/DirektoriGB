@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\Admin\listgbController;
 use App\Http\Controllers\User\UserController;
 
 /*
@@ -37,7 +38,8 @@ require __DIR__ . '/auth.php';
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'prevent-back-history']], function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard_admin');
     Route::get('/data', [AdminController::class, 'data'])->name('data');
-    Route::get('listGB', [AdminController::class, 'listgb'])->name('listGB');
+    Route::get('listGB', [listgbController::class, 'listgb'])->name('listGB');
+
     Route::get('kontenA', [AdminController::class, 'kontenA'])->name('kontenA');
     Route::get('kontenB', [AdminController::class, 'kontenB'])->name('kontenB');
     Route::get('kontenC', [AdminController::class, 'kontenC'])->name('kontenC');
