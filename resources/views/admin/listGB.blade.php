@@ -23,6 +23,7 @@
                             <th>Nama</th>
                             <th>Perguruan Tinggi</th>
                             <th>Program Studi</th>
+                            <th>Kepakaran</th>
                             <th>Kredit</th>
                             <th>Jabatan Fungsional</th>
                         </tr>
@@ -33,10 +34,11 @@
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $guru_besar->nidn }}</td>
                                 <td>
-                                <a href="">{{ $guru_besar->nama }}</a>
+                                    <a href="{{ route('admin.data_gb', $guru_besar->nidn) }}">{{ $guru_besar->nama }}</a>
                                 </td>
                                 <td>{{ $guru_besar->nama_pt }}</td>
                                 <td>{{ $guru_besar->program_studi }}</td>
+                                <td>{{ $guru_besar->bidang_ilmu}}</td>
                                 <td>{{ $guru_besar->angka_kredit }}</td>
                                 <td>{{ $guru_besar->jabatan_fungsional }}</td>
                             </tr>

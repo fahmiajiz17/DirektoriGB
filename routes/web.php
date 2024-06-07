@@ -39,6 +39,11 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard_admin');
     Route::get('/data', [AdminController::class, 'data'])->name('data');
     Route::get('listGB', [listgbController::class, 'listgb'])->name('listGB');
+    Route::get('/data_gb/{nidn}', [listgbController::class, 'showgb'])->name('data_gb');
+    Route::get('/data_publikasi/{nidn}', [listgbController::class, 'showpublikasi'])->name('publikasi');
+    Route::get('/data_organisasi/{nidn}', [listgbController::class, 'showorganisasi'])->name('organisasi');
+    Route::get('/editpublikasi/{id}', 'EditPublikasiController@editpublikasi')->name('edit.publikasi');
+    Route::post('/updatepublikasi', 'UpdatePublikasiController@updatepublikasi')->name('update.publikasi');
 
     Route::get('kontenA', [AdminController::class, 'kontenA'])->name('kontenA');
     Route::get('kontenB', [AdminController::class, 'kontenB'])->name('kontenB');
