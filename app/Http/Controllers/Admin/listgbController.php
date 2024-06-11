@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class listgbController extends Controller
 {
+   
+
     public function listgb()
     {
         $guru_besar = DB::table('guru_besar')
@@ -60,6 +62,10 @@ class listgbController extends Controller
                 'rwy_publikasi.jdl_publikasi', 
                 'rwy_publikasi.link_publikasi', 
                 'rwy_publikasi.thn_terbit',
+                'rwy_publikasi.author',
+                'rwy_publikasi.nama_jurnal',
+                'rwy_publikasi.no_publikasi',
+                'rwy_publikasi.bentuk_publikasi',
                 'guru_besar.nidn'
             )
             ->where('guru_besar.nidn', $nidn)
@@ -71,6 +77,20 @@ class listgbController extends Controller
 
         return view('admin.publikasi', compact('rwy_publikasi'));
     }
+
+    public function updatePublikasi(Request $request, $id)
+{
+    DB::table('rwy_publikasi')
+        ->where('id', $id)
+        ->update([
+            'jdl_publikasi' => $request->jdl_publikasi,
+            'link_publikasi' => $request->link_publikasi,
+            'thn_terbit' => $request->thn_terbit,
+        ]);
+
+    return response()->json(['success' => 'Publikasi updated successfully.']);
+}
+
 
     public function showorganisasi($nidn)
     {
@@ -90,20 +110,33 @@ class listgbController extends Controller
 
         return view('admin.organisasi', compact('rwy_org_prf'));
     }
-}
 
-class EditPublikasiController extends Controller
-{
-    public function editpublikasi($id)
+    public function simpanPerubahan(Request $request)
     {
-        $publikasi = DB::table('rwy_publikasi')
-            ->where('id', $id)
-            ->first();
+        // Validasi request
+        $request->validate([
+            'id' => 'required|exists:rwy_publikasi,id',
+            'judul' => 'required|string|max:255',
+            'link' => 'required|string|max:255',
+            'tahun' => 'required|integer|min:1900|max:'.date('Y'),
+        ]);
 
-        if (!$publikasi) {
-            abort(404);
-        }
+        // Ambil data dari request
+        $publikasiId = $request->input('id');
+        $judul = $request->input('judul');
+        $link = $request->input('link');
+        $tahun = $request->input('tahun');
 
-        return view('admin.edit_publikasi', compact('publikasi'));
+        // Update data publikasi menggunakan Query Builder
+        DB::table('rwy_publikasi')
+            ->where('id', $publikasiId)
+            ->update([
+                'jdl_publikasi' => $judul,
+                'link_publikasi' => $link,
+                'thn_terbit' => $tahun,
+            ]);
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->back()->with('success', 'Perubahan berhasil disimpan');
     }
 }

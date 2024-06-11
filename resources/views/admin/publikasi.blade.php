@@ -28,6 +28,10 @@
                     <tr>
                         <th>No</th>
                         <th>Judul Publikasi</th>
+                        <th>Penulis</th>
+                        <th>Nama Jurnal</th>
+                        <th>No Publikasi</th>
+                        <th>Bentuk Publikasi</th>
                         <th>Link Publikasi</th>
                         <th>Tahun Terbit</th>
                         <th>Action</th>
@@ -38,9 +42,15 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td class="jdl_publikasi">{{ $rwy_publikasi->jdl_publikasi }}</td>
-                            <td class="link_publikasi"><a href="{{ $rwy_publikasi->link_publikasi }}" target="_blank">{{ $rwy_publikasi->link_publikasi }}</a></td>
+                            <td class="nama_penulis">{{ $rwy_publikasi-> author}}</td>
+                            <td class="nama_jurnal">{{ $rwy_publikasi-> nama_jurnal}}</td>
+                            <td class="no_publikasi">{{ $rwy_publikasi-> no_publikasi}}</td>
+                            <td class="bentuk_publikasi">{{ $rwy_publikasi-> bentuk_publikasi}}</td>
+                            <td class="rwy_publikasi"><a href="{{ $rwy_publikasi->link_publikasi }}" target="_blank">{{ $rwy_publikasi->link_publikasi }}</a></td>
                             <td class="thn_terbit">{{ $rwy_publikasi->thn_terbit }}</td>
-                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button></td>
+                            <td><button type="button" class="btn btn-primary edit-btn" data-toggle="modal" data-target="#exampleModal" data-judul="{{ $rwy_publikasi->jdl_publikasi }}" data-penulis="{{ $rwy_publikasi->author }}"
+                            data-namajurnal="{{ $rwy_publikasi->nama_jurnal }}" data-nopublikasi="{{ $rwy_publikasi->no_publikasi }}" data-bentuk="{{ $rwy_publikasi->bentuk_publikasi }}" 
+                            data-link="{{ $rwy_publikasi->link_publikasi }}" data-tahun="{{ $rwy_publikasi->thn_terbit }}">Edit</button></td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -60,11 +70,26 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="editPublikasiForm">
-                <input type="hidden" name="id" value="{{ $rwy_publikasi->nidn }}">
+                <form id="editPublikasiForm" >
                     <div class="form-group">
                         <label for="judul">Judul Publikasi</label>
-                        <input type="text" class="form-control" id="judul" placeholder="Masukkan Judul Publikasi" value="{{ $rwy_publikasi->jdl_publikasi }}">
+                        <input type="text" class="form-control" id="judul" placeholder="Masukkan Judul Publikasi">
+                    </div>
+                    <div class="form-group">
+                        <label for="penulis">Penulis</label>
+                        <input type="text" class="form-control" id="penulis" placeholder="Masukkan Penulis Publikasi">
+                    </div>
+                    <div class="form-group">
+                        <label for="namajurnal">Nama Jurnal</label>
+                        <input type="text" class="form-control" id="namajurnal" placeholder="Masukkan Penulis Publikasi">
+                    </div>
+                    <div class="form-group">
+                        <label for="nopublikasi">No Publikasi</label>
+                        <input type="text" class="form-control" id="nopublikasi" placeholder="Masukkan No Publikasi">
+                    </div>
+                    <div class="form-group">
+                        <label for="bentuk">Bentuk Publikasi</label>
+                        <input type="text" class="form-control" id="bentuk" placeholder="Masukkan Bentuk Publikasi">
                     </div>
                     <div class="form-group">
                         <label for="link">Link Publikasi</label>
@@ -83,6 +108,27 @@
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function(){
+    $('.edit-btn').on('click', function(){
+        var judul = $(this).data('judul');
+        var penulis = $(this).data('penulis');
+        var namajurnal = $(this).data('namajurnal');
+        var nopublikasi = $(this).data('nopublikasi');
+        var bentuk = $(this).data('bentuk');
+        var link = $(this).data('link');
+        var tahun = $(this).data('tahun');
+
+        $('#judul').val(judul);
+        $('#penulis').val(penulis);
+        $('#namajurnal').val(namajurnal);
+        $('#nopublikasi').val(nopublikasi);
+        $('#bentuk').val(bentuk);
+        $('#link').val(link);
+        $('#year').val(tahun);
+    });
+});
 </script>
 
 @endsection

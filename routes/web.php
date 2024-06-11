@@ -29,6 +29,7 @@ Route::get('kontenA', [HomepageController::class, 'kontenA'])->name('kontenA');
 Route::get('kontenB', [HomepageController::class, 'kontenB'])->name('kontenB');
 Route::get('kontenC', [HomepageController::class, 'kontenC'])->name('kontenC');
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -44,6 +45,9 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::get('/data_organisasi/{nidn}', [listgbController::class, 'showorganisasi'])->name('organisasi');
     Route::get('/editpublikasi/{id}', 'EditPublikasiController@editpublikasi')->name('edit.publikasi');
     Route::post('/updatepublikasi', 'UpdatePublikasiController@updatepublikasi')->name('update.publikasi');
+    Route::post('/update-publikasi/{id}', [listgbController::class, 'update']);
+    Route::post('/simpan-organisasi', [listgbController::class, 'simpanOrganisasi'])->name('simpan.organisasi');
+    Route::post('/simpan-perubahan-publikasi', [listgbController::class, 'simpanPerubahan']);
 
     Route::get('kontenA', [AdminController::class, 'kontenA'])->name('kontenA');
     Route::get('kontenB', [AdminController::class, 'kontenB'])->name('kontenB');
